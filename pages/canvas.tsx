@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Link from "next/link";
 
 type Pal = { fill: string; badge: string };
 type DepKey = keyof typeof DEP_STYLES;
@@ -132,6 +133,12 @@ const Divider = ({ label }: { label: string }) => (
 export default function Canvas() {
   return (
     <div style={{ background:PALETTE.bg, minHeight:"100vh", padding:"22px 18px", fontFamily:"Inter, system-ui, sans-serif" }}>
+
+      {/* Nav */}
+      <div style={{ maxWidth:800, margin:"0 auto 18px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <span style={{ fontWeight:800, fontSize:15, color:"#818cf8" }}>raphaelmoraes.dev</span>
+        <Link href="/" style={{ color:"#94a3b8", fontSize:13, textDecoration:"none" }}>← Home</Link>
+      </div>
 
       {/* Title */}
       <div style={{ textAlign:"center", marginBottom:18 }}>
