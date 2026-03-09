@@ -1,3 +1,8 @@
+import type { CSSProperties } from "react";
+
+type Pal = { fill: string; badge: string };
+type DepKey = keyof typeof DEP_STYLES;
+
 const PALETTE = {
   bg:    "#1e1b4b",
   col1:  { fill: "#4f46e5", badge: "#818cf8" },
@@ -56,7 +61,7 @@ const DEP_STYLES = {
   LocalRemote: { bg: "#92400e18", border: "#92400e66", color: "#fcd34d", label: "Depends on: Local & Remote Infrastructure" },
 };
 
-const DepBadge = ({ type }) => {
+const DepBadge = ({ type }: { type: keyof typeof DEP_STYLES }) => {
   const s = DEP_STYLES[type];
   return <span style={{ display:"inline-flex", alignItems:"center", background:s.bg, border:`1px solid ${s.border}`, borderRadius:4, fontSize:8.5, padding:"2px 7px", color:s.color, fontWeight:700, letterSpacing:0.3, whiteSpace:"nowrap" }}>{s.label}</span>;
 };
@@ -65,15 +70,15 @@ const PSBadge = () => (
   <span style={{ display:"inline-flex", alignItems:"center", background:"linear-gradient(90deg, #7c3aed44, #4f46e544)", border:"1px solid #818cf8aa", borderRadius:4, fontSize:8.5, padding:"1px 6px", whiteSpace:"nowrap", color:"#c4b5fd", fontWeight:800, letterSpacing:0.5, textTransform:"uppercase", flexShrink:0 }}>★ Personal Standard</span>
 );
 
-const Tag = ({ label, color }) => (
+const Tag = ({ label, color }: { label: string; color: string }) => (
   <span style={{ display:"inline-block", background:`${color}22`, color, border:`1px solid ${color}55`, borderRadius:4, fontSize:9.5, padding:"1px 6px", margin:"2px 2px 0 0", fontFamily:"monospace", fontWeight:700, whiteSpace:"nowrap" }}>{label}</span>
 );
 
-const Num = ({ n, color }) => (
+const Num = ({ n, color }: { n: string; color: string }) => (
   <div style={{ width:30, height:30, borderRadius:"50%", border:`2px solid ${color}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:13, fontWeight:800, color, flexShrink:0, background:`${color}18`, fontFamily:"Inter, system-ui, sans-serif" }}>{n}</div>
 );
 
-const Cell = ({ num, title, sub, items=[], tags=[], pal, style={}, isStandard=false, deps=[] }) => (
+const Cell = ({ num, title, sub, items=[], tags=[], pal, style={}, isStandard=false, deps=[] }: { num: string; title: string; sub?: string; items?: string[]; tags?: string[]; pal: Pal; style?: CSSProperties; isStandard?: boolean; deps?: DepKey[] }) => (
   <div style={{ background:isStandard?`${pal.fill}28`:`${pal.fill}18`, border:isStandard?`2px solid ${pal.fill}99`:`1.5px solid ${pal.fill}55`, borderRadius:10, padding:"12px 14px", display:"flex", flexDirection:"column", gap:7, boxShadow:isStandard?`0 0 12px ${pal.fill}33`:"none", ...style }}>
     <div style={{ display:"flex", alignItems:"flex-start", gap:8 }}>
       <Num n={num} color={pal.badge} />
@@ -97,7 +102,7 @@ const Cell = ({ num, title, sub, items=[], tags=[], pal, style={}, isStandard=fa
   </div>
 );
 
-const BandCell = ({ title, sub, items=[], tags=[], pal, isStandard=false, deps=[] }) => (
+const BandCell = ({ title, sub, items=[], tags=[], pal, isStandard=false, deps=[] }: { title: string; sub?: string; items?: string[]; tags?: string[]; pal: Pal; isStandard?: boolean; deps?: DepKey[] }) => (
   <div style={{ background:isStandard?`${pal.fill}30`:`${pal.fill}25`, border:isStandard?`2px solid ${pal.fill}88`:`1px solid ${pal.fill}44`, borderRadius:8, padding:"10px 12px", display:"flex", flexDirection:"column", gap:6, boxShadow:isStandard?`0 0 10px ${pal.fill}33`:"none" }}>
     <div style={{ display:"flex", alignItems:"center", gap:5, flexWrap:"wrap" }}>
       <span style={{ fontWeight:700, fontSize:11.5, color:pal.badge, fontFamily:"Inter, system-ui, sans-serif" }}>{title}</span>
@@ -116,7 +121,7 @@ const BandCell = ({ title, sub, items=[], tags=[], pal, isStandard=false, deps=[
   </div>
 );
 
-const Divider = ({ label }) => (
+const Divider = ({ label }: { label: string }) => (
   <div style={{ display:"flex", alignItems:"center", gap:10, margin:"6px 0" }}>
     <div style={{ flex:1, height:1, background:"rgba(255,255,255,0.07)" }}/>
     <div style={{ fontSize:9.5, color:"#475569", fontWeight:700, letterSpacing:2, textTransform:"uppercase", whiteSpace:"nowrap" }}>{label}</div>
