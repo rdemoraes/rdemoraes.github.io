@@ -15,22 +15,14 @@ const PALETTE = {
 
 const posts = [
   {
-    slug: "mcp-write-tool-injection",
+    href: "https://www.linkedin.com/pulse/write-tool-trap-how-indirect-prompt-injection-turns-your-de-moraes-o22wf/",
+    external: true,
     date: "Mar 9, 2026",
     tag: "Security",
     tagColor: "#f472b6",
     title: "The Write Tool Trap: How Indirect Prompt Injection Turns Your MCP Server Against You",
     description:
       "I found 14 write tools in my own MCP server with zero confirmation gate. Here's the full attack path and the three fixes — confirmed gates, content enveloping, and bounded list calls.",
-  },
-  {
-    slug: "mcp-security-testing-observability",
-    date: "Mar 8, 2026",
-    tag: "Platform Engineering",
-    tagColor: "#34d399",
-    title: "Building MCP Servers the Right Way: Security, Testing, and Observability First",
-    description:
-      "A practical standard for building production-grade MCP servers with FastMCP — grounded in three pillars: Security First (OWASP MCP Top 10 + GenAI threat model), QA/Testing First (TDD vs BDD), and Observability First (Arize Phoenix + OpenTelemetry).",
   },
 ];
 
@@ -53,7 +45,8 @@ const Tag = ({ label, color }: { label: string; color: string }) => (
 );
 
 const PostCard = ({
-  slug,
+  href,
+  external,
   date,
   tag,
   tagColor,
@@ -61,7 +54,9 @@ const PostCard = ({
   description,
 }: (typeof posts)[0]) => (
   <a
-    href={`/posts/${slug}`}
+    href={href}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noreferrer" : undefined}
     style={{
       display: "block",
       background: PALETTE.surface,
@@ -258,7 +253,7 @@ export default function Home() {
             </h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {posts.map((p) => (
-                <PostCard key={p.slug} {...p} />
+                <PostCard key={p.href} {...p} />
               ))}
             </div>
           </section>
