@@ -218,8 +218,8 @@ export default function Home() {
                 margin: "0 0 28px",
               }}
             >
-              I build platform engineering tooling for AI-native teams —
-              MCP servers, agentic workflows, and the security and observability
+              I build Agentic Platform Engineering tooling - MCP servers, AI
+              agents, agentic workflows, and the security and observability
               standards that make them production-grade.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
