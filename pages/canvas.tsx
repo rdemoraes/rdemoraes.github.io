@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Head from "next/head";
-import Link from "next/link";
+import NavBar from "../components/NavBar";
 import styles from "../styles/canvas.module.css";
 
 type Pal = { fill: string; badge: string };
@@ -140,11 +140,7 @@ export default function Canvas() {
         <title>GenAI Technology Stack Canvas — raphaelmoraes.dev</title>
       </Head>
 
-      {/* Nav */}
-      <div style={{ maxWidth:800, margin:"0 auto 18px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-        <span style={{ fontWeight:800, fontSize:15, color:"#818cf8" }}>raphaelmoraes.dev</span>
-        <Link href="/" style={{ color:"#94a3b8", fontSize:13, textDecoration:"none" }}>← Home</Link>
-      </div>
+      <NavBar />
 
       {/* Title */}
       <div style={{ textAlign:"center", marginBottom:18 }}>

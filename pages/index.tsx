@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import NavBar from "../components/NavBar";
 
 const PALETTE = {
   bg: "#0f172a",
@@ -139,49 +140,7 @@ export default function Home() {
           color: PALETTE.text,
         }}
       >
-        {/* Nav */}
-        <nav
-          style={{
-            borderBottom: `1px solid ${PALETTE.border}`,
-            padding: "0 24px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: 56,
-            maxWidth: 800,
-            margin: "0 auto",
-          }}
-        >
-          <span
-            style={{ fontWeight: 800, fontSize: 15, color: PALETTE.indigo }}
-          >
-            raphaelmoraes.dev
-          </span>
-          <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
-            <Link
-              href="/canvas"
-              style={{ color: PALETTE.slate, fontSize: 13, textDecoration: "none" }}
-            >
-              GenAI Canvas
-            </Link>
-            <a
-              href="https://github.com/rdemoraes"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: PALETTE.slate, fontSize: 13, textDecoration: "none" }}
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/raphaelmoraes"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: PALETTE.slate, fontSize: 13, textDecoration: "none" }}
-            >
-              LinkedIn
-            </a>
-          </div>
-        </nav>
+        <NavBar />
 
         <main style={{ maxWidth: 800, margin: "0 auto", padding: "60px 24px" }}>
           {/* Hero */}
@@ -196,7 +155,7 @@ export default function Home() {
                 marginBottom: 16,
               }}
             >
-              Platform Engineer · AI Systems
+              Agentic Platform Engineer · AI Systems
             </div>
             <h1
               style={{
