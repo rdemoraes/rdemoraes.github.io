@@ -134,7 +134,7 @@ const Divider = ({ label }: { label: string }) => (
 
 export default function Canvas() {
   return (
-    <div style={{ background:PALETTE.bg, minHeight:"100vh", padding:"22px 18px", fontFamily:"Inter, system-ui, sans-serif" }}>
+    <div style={{ background:PALETTE.bg, minHeight:"100vh", fontFamily:"Inter, system-ui, sans-serif" }}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>GenAI Technology Stack Canvas — raphaelmoraes.dev</title>
@@ -142,6 +142,7 @@ export default function Canvas() {
 
       <NavBar />
 
+      <div style={{ padding:"60px 18px 22px" }}>
       {/* Title */}
       <div style={{ textAlign:"center", marginBottom:18 }}>
         <div style={{ fontSize:10, fontWeight:700, color:"#818cf8", letterSpacing:3, textTransform:"uppercase", marginBottom:4 }}>DEVELOPED BY RAPHAEL MORAES</div>
@@ -374,6 +375,7 @@ export default function Canvas() {
       {/* Footer */}
       <div style={{ textAlign:"center", marginTop:8, fontSize:10, color:"#334155" }}>
         raphaelmoraes.dev · GenAI Engineering Standard v1.0 · 2026
+      </div>
       </div>
     </div>
   );

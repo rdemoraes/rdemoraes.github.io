@@ -138,9 +138,18 @@ export const shadow = {
 // ---------------------------------------------------------------------------
 
 export const layout = {
-  maxWidth: 800,         // default content max-width (home, blog)
-  maxWidthWide: 1200,   // wide layouts (canvas, dashboards)
-  navHeight: 56,
-  pagePaddingX: 24,
-  pagePaddingY: 60,
+  // -- Nav
+  navHeight: 56,         // height of the sticky NavBar
+
+  // -- Content max-widths
+  maxWidth: 800,         // standard pages (home, blog, article)
+  maxWidthWide: 1200,   // wide/diagram views (canvas, dashboards)
+
+  // -- Page content wrapper padding
+  // Apply as: padding: `${layout.contentPaddingTop}px ${layout.contentPaddingX}px`
+  // This is the standard gap between the sticky NavBar and the first piece of content.
+  contentPaddingTop: 60,   // vertical spacing below NavBar — consistent across all pages
+  contentPaddingX:   24,   // horizontal padding for standard pages
+  contentPaddingXWide: 18, // horizontal padding for wide/diagram pages (canvas)
+  contentPaddingBottom: 60, // vertical spacing before footer
 } as const;

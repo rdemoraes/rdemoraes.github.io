@@ -33,6 +33,9 @@ export default function NavBar() {
   return (
     <div
       style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
         borderBottom: `1px solid ${COLORS.border}`,
         background: COLORS.bg,
       }}

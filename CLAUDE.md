@@ -98,6 +98,57 @@ Use `shadow.glow(color)` and `shadow.glowSm(color)` helpers for accent glow effe
 
 ---
 
+### Layout & Page Structure
+
+Every page must follow this shell:
+
+```
+<root div>                        ← background: colors.bgPage, minHeight: 100vh
+  <NavBar />                      ← sticky, always first child, outside any padding wrapper
+  <content wrapper>               ← padding: contentPaddingTop / contentPaddingX
+    {page content}
+  </content wrapper>
+  <footer>                        ← optional, full-width
+</root div>
+```
+
+**Rules:**
+
+| Token | Value | Rule |
+|---|---|---|
+| `layout.navHeight` | 56px | NavBar height — do not change |
+| `layout.contentPaddingTop` | 60px | Top padding on the content wrapper — **must be identical on every page** |
+| `layout.contentPaddingX` | 24px | Horizontal padding for standard pages (home, blog) |
+| `layout.contentPaddingXWide` | 18px | Horizontal padding for wide/diagram pages (canvas) |
+| `layout.contentPaddingBottom` | 60px | Bottom padding before footer |
+| `layout.maxWidth` | 800px | Max-width for standard content — centered with `margin: 0 auto` |
+| `layout.maxWidthWide` | 1200px | Max-width for wide/diagram views |
+
+- `<NavBar />` must always be the **first child** of the root div, with **no padding wrapping it**. Padding lives on the content wrapper div that comes after it.
+- `contentPaddingTop: 60px` is non-negotiable — it sets the visual breathing room between the sticky nav and the first element on every page. Never reduce it for individual pages.
+
+**Standard page template:**
+```tsx
+<div style={{ background: colors.bgPage, minHeight: "100vh", fontFamily: typography.fontSans }}>
+  <NavBar />
+  <main style={{ maxWidth: layout.maxWidth, margin: "0 auto", padding: `${layout.contentPaddingTop}px ${layout.contentPaddingX}px` }}>
+    {/* page content */}
+  </main>
+</div>
+```
+
+**Wide page template (canvas):**
+```tsx
+<div style={{ background: colors.bgPage, minHeight: "100vh", fontFamily: typography.fontSans }}>
+  <NavBar />
+  <div style={{ padding: `${layout.contentPaddingTop}px ${layout.contentPaddingXWide}px ${layout.contentPaddingBottom}px` }}>
+    {/* page content */}
+  </div>
+</div>
+```
+
+---
+
 ## Component Architecture
 
 ### Directory structure
