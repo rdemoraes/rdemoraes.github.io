@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import styles from "../styles/navbar.module.css";
 
 const BRAND = "raphaelmoraes.dev";
 
@@ -27,8 +29,22 @@ const linkStyle = (active: boolean): React.CSSProperties => ({
   whiteSpace: "nowrap",
 });
 
+const mobileLinkStyle = (active: boolean): React.CSSProperties => ({
+  display: "block",
+  fontSize: 15,
+  fontFamily: "Inter, system-ui, sans-serif",
+  fontWeight: active ? 600 : 400,
+  color: active ? COLORS.linkActive : COLORS.linkDefault,
+  textDecoration: "none",
+  padding: "10px 0",
+  borderBottom: `1px solid ${COLORS.border}`,
+});
+
 export default function NavBar() {
   const { pathname } = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const close = () => setIsOpen(false);
 
   return (
     <div
@@ -36,10 +52,11 @@ export default function NavBar() {
         position: "sticky",
         top: 0,
         zIndex: 100,
-        borderBottom: `1px solid ${COLORS.border}`,
         background: COLORS.bg,
+        borderBottom: isOpen ? "none" : `1px solid ${COLORS.border}`,
       }}
     >
+      {/* Top bar */}
       <nav
         style={{
           maxWidth: 800,
@@ -52,7 +69,7 @@ export default function NavBar() {
         }}
       >
         {/* Brand */}
-        <Link href="/" style={{ textDecoration: "none" }}>
+        <Link href="/" onClick={close} style={{ textDecoration: "none" }}>
           <span
             style={{
               fontWeight: 800,
@@ -65,18 +82,12 @@ export default function NavBar() {
           </span>
         </Link>
 
-        {/* Nav links */}
-        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+        {/* Desktop links */}
+        <div className={styles.desktopLinks}>
           {NAV_LINKS.map(({ label, href, external }) => {
             const active = !external && pathname === href;
             return external ? (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                style={linkStyle(active)}
-              >
+              <a key={label} href={href} target="_blank" rel="noreferrer" style={linkStyle(active)}>
                 {label}
               </a>
             ) : (
@@ -86,7 +97,47 @@ export default function NavBar() {
             );
           })}
         </div>
+
+        {/* Hamburger — mobile only */}
+        <button
+          className={styles.hamburger}
+          onClick={() => setIsOpen((o) => !o)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
       </nav>
+
+      {/* Mobile dropdown */}
+      {isOpen && (
+        <div className={styles.mobileMenu}>
+          {NAV_LINKS.map(({ label, href, external }) => {
+            const active = !external && pathname === href;
+            return external ? (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                style={mobileLinkStyle(active)}
+                onClick={close}
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={label}
+                href={href}
+                style={mobileLinkStyle(active)}
+                onClick={close}
+              >
+                {label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

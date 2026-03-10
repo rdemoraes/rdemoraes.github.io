@@ -1,0 +1,39 @@
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #94a3b8;
+  font-size: 22px;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+}
+
+.mobileMenu {
+  border-top: 1px solid #1e3a5f;
+  padding: 8px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media (max-width: 640px) {
+  .desktopLinks {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
