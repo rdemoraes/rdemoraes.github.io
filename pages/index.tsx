@@ -14,6 +14,96 @@ const PALETTE = {
   muted: "#64748b",
 };
 
+const certifications = [
+  {
+    title: "Certified Kubernetes Administrator",
+    abbr: "CKA",
+    issuer: "CNCF / Linux Foundation",
+    color: "#326ce5",
+  },
+  {
+    title: "AWS Developer Associate",
+    abbr: "DVA",
+    issuer: "Amazon Web Services",
+    color: "#f59e0b",
+  },
+  {
+    title: "AWS Solutions Architect Associate",
+    abbr: "SAA",
+    issuer: "Amazon Web Services",
+    color: "#f59e0b",
+  },
+  {
+    title: "Associate Cloud Engineer",
+    abbr: "ACE",
+    issuer: "Google Cloud",
+    color: "#34a853",
+  },
+  {
+    title: "GitLab Certified Associate",
+    abbr: "GL",
+    issuer: "GitLab",
+    color: "#fc6d26",
+  },
+];
+
+const CertCard = ({ title, abbr, issuer, color }: (typeof certifications)[0]) => (
+  <div
+    style={{
+      background: PALETTE.surface,
+      border: `1px solid ${PALETTE.border}`,
+      borderRadius: 12,
+      padding: "16px 20px",
+      display: "flex",
+      alignItems: "center",
+      gap: 16,
+    }}
+  >
+    <div
+      style={{
+        width: 44,
+        height: 44,
+        borderRadius: 10,
+        background: `${color}18`,
+        border: `1.5px solid ${color}55`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: 11,
+        fontWeight: 800,
+        color,
+        fontFamily: "monospace",
+        flexShrink: 0,
+        letterSpacing: 0.5,
+      }}
+    >
+      {abbr}
+    </div>
+    <div>
+      <div
+        style={{
+          fontSize: 14,
+          fontWeight: 700,
+          color: PALETTE.text,
+          fontFamily: "Inter, system-ui, sans-serif",
+          marginBottom: 3,
+        }}
+      >
+        {title}
+      </div>
+      <div
+        style={{
+          fontSize: 12,
+          color: PALETTE.muted,
+          fontFamily: "Inter, system-ui, sans-serif",
+        }}
+      >
+        {issuer}
+      </div>
+    </div>
+  </div>
+);
+
 const posts = [
   {
     href: "https://www.linkedin.com/pulse/write-tool-trap-how-indirect-prompt-injection-turns-your-de-moraes-o22wf/",
@@ -183,13 +273,25 @@ export default function Home() {
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               {[
+                "Python"
                 "FastMCP",
+                "PyTest",
+                "LangGraph",
+                "LiteLLM",
                 "OpenTelemetry",
                 "Arize Phoenix",
                 "GitLab CI",
+                "GitHub Actions",
                 "Prefect",
+                "Databricks",
                 "Docker",
-                "Python",
+                "Docker Compose",
+                "DevContainers",
+                "Kubernetes",
+                "AWS",
+                "GCP",
+                "Terraform",
+                "Crossplane",
               ].map((t) => (
                 <Tag key={t} label={t} color={PALETTE.cyan} />
               ))}
@@ -213,6 +315,27 @@ export default function Home() {
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {posts.map((p) => (
                 <PostCard key={p.href} {...p} />
+              ))}
+            </div>
+          </section>
+
+          {/* Certifications */}
+          <section style={{ marginBottom: 64 }}>
+            <h2
+              style={{
+                fontSize: 13,
+                fontWeight: 700,
+                color: PALETTE.muted,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                margin: "0 0 20px",
+              }}
+            >
+              Certifications
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {certifications.map((c) => (
+                <CertCard key={c.abbr} {...c} />
               ))}
             </div>
           </section>
