@@ -273,7 +273,7 @@ export default function Home() {
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               {[
-                "Python"
+                "Python",
                 "FastMCP",
                 "PyTest",
                 "LangGraph",
