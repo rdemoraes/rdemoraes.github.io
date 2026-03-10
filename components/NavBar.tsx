@@ -8,7 +8,7 @@ const BRAND = "raphaelmoraes.dev";
 const NAV_LINKS = [
   { label: "GenAI Canvas", href: "/canvas", external: false },
   { label: "GitHub", href: "https://github.com/rdemoraes", external: true },
-  { label: "LinkedIn", href: "https://linkedin.com/in/raphaelmoraes", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/raphael-francisco-de-moraes-9206a048/", external: true },
 ] as const;
 
 const COLORS = {
