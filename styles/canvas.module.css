@@ -23,6 +23,10 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
+.gridTools > * {
+  min-width: 0;
+}
+
 @media (max-width: 1024px) {
   .grid5 {
     grid-template-columns: 1fr 1fr 1fr;
