@@ -20,12 +20,15 @@
 
 .gridTools {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 @media (max-width: 1024px) {
   .grid5 {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .gridTools {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -43,7 +46,7 @@
     grid-template-columns: 1fr;
   }
   .gridTools {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -62,5 +65,11 @@
   }
   .gridTools {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .gridTools {
+    grid-template-columns: 1fr;
   }
 }

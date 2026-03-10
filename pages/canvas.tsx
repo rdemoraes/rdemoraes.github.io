@@ -7,7 +7,7 @@ type Pal = { fill: string; badge: string };
 type DepKey = keyof typeof DEP_STYLES;
 
 const PALETTE = {
-  bg:    "#1e1b4b",
+  bg:    "#0f172a",
   col1:  { fill: "#4f46e5", badge: "#818cf8" },
   col2:  { fill: "#0891b2", badge: "#22d3ee" },
   col3:  { fill: "#7c3aed", badge: "#a78bfa" },

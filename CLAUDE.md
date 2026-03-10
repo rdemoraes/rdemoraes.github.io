@@ -35,7 +35,7 @@ import { colors, typography, space, radius } from "../styles/tokens";
 | Token | Value | Usage |
 |---|---|---|
 | `colors.bgPage` | `#0f172a` | Default page background (all standard pages) |
-| `colors.bgCanvas` | `#1e1b4b` | Canvas / diagram views only |
+| `colors.bgCanvas` | `#1e1b4b` | Reserved — do not use (kept for reference only) |
 | `colors.bgSurface` | `#1e293b` | Cards, panels, post cards |
 | `colors.bgSubtle` | `rgba(255,255,255,0.03)` | Subtle section lift |
 | `colors.borderDefault` | `#1e3a5f` | Cards, nav separators |
@@ -48,8 +48,8 @@ import { colors, typography, space, radius } from "../styles/tokens";
 | `colors.textMuted` | `#64748b` | Labels, section headers, footer |
 | `colors.textDim` | `#475569` | De-emphasised text |
 
-**Page background rule**: All pages use `colors.bgPage` (`#0f172a`) as the root background.
-The canvas page (`canvas.tsx`) is the only exception — it uses `colors.bgCanvas` (`#1e1b4b`) to create visual separation for the diagram view. Do not introduce other background values.
+**Page background rule**: All pages use `colors.bgPage` (`#0f172a`) as the root background — no exceptions.
+Do not introduce other background values for page roots.
 
 ---
 

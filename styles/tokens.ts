@@ -11,9 +11,8 @@
 
 export const colors = {
   // -- Backgrounds
-  bgPage:    "#0f172a",  // Slate 900  — default page background
-  bgCanvas:  "#1e1b4b",  // Indigo 950 — canvas / diagram views (intentionally distinct)
-  bgSurface: "#1e293b",  // Slate 800  — cards, panels
+  bgPage:    "#0f172a",  // Slate 900 — all page backgrounds (single standard)
+  bgSurface: "#1e293b",  // Slate 800 — cards, panels
   bgSubtle:  "rgba(255,255,255,0.03)",  // near-invisible surface lift
 
   // -- Borders
