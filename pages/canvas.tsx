@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
+import Head from "next/head";
 import Link from "next/link";
+import styles from "../styles/canvas.module.css";
 
 type Pal = { fill: string; badge: string };
 type DepKey = keyof typeof DEP_STYLES;
@@ -133,6 +135,10 @@ const Divider = ({ label }: { label: string }) => (
 export default function Canvas() {
   return (
     <div style={{ background:PALETTE.bg, minHeight:"100vh", padding:"22px 18px", fontFamily:"Inter, system-ui, sans-serif" }}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>GenAI Technology Stack Canvas — raphaelmoraes.dev</title>
+      </Head>
 
       {/* Nav */}
       <div style={{ maxWidth:800, margin:"0 auto 18px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
@@ -142,7 +148,7 @@ export default function Canvas() {
 
       {/* Title */}
       <div style={{ textAlign:"center", marginBottom:18 }}>
-        <div style={{ fontSize:10, fontWeight:700, color:"#818cf8", letterSpacing:3, textTransform:"uppercase", marginBottom:4 }}>DEVELOPED BY RAPHAELMORAES.DEV</div>
+        <div style={{ fontSize:10, fontWeight:700, color:"#818cf8", letterSpacing:3, textTransform:"uppercase", marginBottom:4 }}>DEVELOPED BY RAPHAEL MORAES</div>
         <h1 style={{ fontSize:22, fontWeight:900, color:"#f1f5f9", margin:0 }}>GenAI Technology Stack Setup Canvas</h1>
         <p style={{ fontSize:11, color:"#64748b", marginTop:4 }}>Opinionated, layered AI-native engineering stack for Vibe Coders · v1.0</p>
         <div style={{ display:"inline-flex", alignItems:"center", gap:6, marginTop:8, flexWrap:"wrap", justifyContent:"center" }}>
@@ -164,7 +170,7 @@ export default function Canvas() {
       {/* PILLARS OVERVIEW */}
       <div style={{ background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:12, padding:"16px 20px", marginBottom:18 }}>
         <div style={{ fontSize:10, fontWeight:700, color:"#64748b", letterSpacing:2, textTransform:"uppercase", marginBottom:12 }}>Architecture Overview — Four Layers</div>
-        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gap:10 }}>
+        <div className={styles.grid4} style={{ gap:10 }}>
           {LAYERS.map((l) => (
             <div key={l.num} style={{ display:"flex", flexDirection:"column", gap:6 }}>
               <div style={{ display:"flex", alignItems:"center", gap:8 }}>
@@ -179,7 +185,7 @@ export default function Canvas() {
 
       {/* ROW 1 — Client Layer */}
       <Divider label="Client Layer" />
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:8, marginBottom:8 }}>
+      <div className={styles.grid3} style={{ gap:8, marginBottom:8 }}>
         <Cell num="1" title="AI Model Tool" sub="Core AI interfaces" pal={PALETTE.col1} isStandard deps={["Local","LocalRemote"]}
           items={["Claude Desktop — GUI, MCP manager","Claude Code CLI — agentic terminal","Model selection strategy","API key & token budget management"]}
           tags={["claude-sonnet-4-6","claude-opus-4-6","Claude Code"]}
@@ -193,7 +199,7 @@ export default function Canvas() {
           tags={["CLAUDE.md","/review","/fix","/test","PreToolUse","PostToolUse"]}
         />
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:8, alignItems:"stretch" }}>
+      <div className={styles.grid2} style={{ gap:8, marginBottom:8, alignItems:"stretch" }}>
         <div style={{ background:`${PALETTE.col5a.fill}18`, border:`1.5px solid ${PALETTE.col5a.fill}55`, borderRadius:10, padding:"12px 14px", display:"flex", flexDirection:"column", gap:8, height:"100%" }}>
           <div style={{ display:"flex", alignItems:"center", gap:8 }}>
             <Num n="4" color={PALETTE.col5a.badge} />
@@ -203,7 +209,7 @@ export default function Canvas() {
             </div>
             <Tag label="settings.json" color={PALETTE.col5a.badge} />
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, flex:1 }}>
+          <div className={styles.grid2} style={{ gap:8, flex:1 }}>
             <BandCell pal={PALETTE.col5a} deps={["Local"]} title="Local MCP Servers" sub="Docker Compose · localhost SSE"
               items={["Filesystem — local codebase access","Docker — container management","Devcontainer tooling","Custom internal scripts & tools"]}
               tags={["localhost","Docker Compose","SSE"]}
@@ -225,7 +231,7 @@ export default function Canvas() {
               <div style={{ fontSize:10, color:"#94a3b8", fontFamily:"Inter, system-ui, sans-serif", marginTop:1 }}>Agentic use cases — specialist tools per role</div>
             </div>
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, flex:1 }}>
+          <div className={styles.grid2} style={{ gap:8, flex:1 }}>
             <BandCell pal={PALETTE.col5b} deps={["Skills","Local"]} title="Local Agents" sub="On-demand or auto-triggered via Claude Code Hooks"
               items={["Coder & Investigator — Claude Code — feature, refactor, TDD, CLI troubleshooting","Reviewer — PR-Agent — PostToolUse Hook on git push","Security — Metis (Arm) — PreToolUse Hook, deep security review","All route through LiteLLM AI Gateway"]}
               tags={["Claude Code","PR-Agent","Metis","PostToolUse","PreToolUse"]}
@@ -240,7 +246,7 @@ export default function Canvas() {
 
       {/* ROW 2 — Standards & Frameworks Layer */}
       <Divider label="Standards & Frameworks Layer" />
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr 1fr", gap:8, marginBottom:8 }}>
+      <div className={styles.grid5} style={{ gap:8, marginBottom:8 }}>
         <Cell num="6" title="MCP Dev Standard" sub="How to build MCPs" pal={PALETTE.std} isStandard deps={["Rules","Local"]}
           items={["FastMCP as MCP framework","Poetry for dependency management","Pytest — unit & integration tests","SSE transport — persistent Docker service"]}
           tags={["FastMCP","Poetry","Pytest","SSE"]}
@@ -262,7 +268,7 @@ export default function Canvas() {
           tags={["Trivy","Megalinter","OWASP MCP Top 10","1Password","SAST"]}
         />
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:8 }}>
+      <div className={styles.grid2} style={{ gap:8, marginBottom:8 }}>
         <Cell num="11" title="Inputs & Knowledge Base" sub="What agents and MCPs must consume — define before building" pal={PALETTE.std} deps={["Rules","LocalRemote"]}
           items={["Codebase & repository context — primary source of truth","Architecture Decision Records (ADRs) — design rationale","API specs & OpenAPI schemas — tool argument contracts","Runbooks & incident history — operational knowledge","Slack threads & ticket history — conversational context","CLAUDE.md — project-scoped AI rules & memory injection","Local RAG — pgvector (standard) on local Postgres, indexes codebase & personal knowledge","Remote RAG — pgvector on shared Postgres EKS/GKE, indexes ADRs, runbooks, incident history","Environment configs — .env, secrets resolved at runtime"]}
           tags={["ADRs","OpenAPI","CLAUDE.md","Local RAG","Remote RAG","pgvector","runbooks",".env"]}
@@ -289,7 +295,7 @@ export default function Canvas() {
             {["LiteLLM","OpenAI-compat API","Docker","1Password Connect"].map(t=><Tag key={t} label={t} color={PALETTE.gw.badge}/>)}
           </div>
         </div>
-        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr 1fr", gap:8 }}>
+        <div className={styles.grid5} style={{ gap:8 }}>
           <BandCell pal={PALETTE.gw} isStandard deps={["LocalRemote"]} title="Model Routing" sub="Provider abstraction · powered by LiteLLM"
             items={["LiteLLM — OpenAI-compatible API for all clients","Route to Claude, GPT-4, Gemini, Ollama","Fallback strategies — reroute on failure","Model aliasing — swap without code change"]}
             tags={["LiteLLM","claude-3-5","gpt-4o","gemini","ollama","fallback"]}
@@ -329,7 +335,7 @@ export default function Canvas() {
             {["Arize Phoenix","OpenTelemetry","OTLP","LiteLLM logs","opt-in"].map(t=><Tag key={t} label={t} color={PALETTE.obs.badge}/>)}
           </div>
         </div>
-        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gap:8 }}>
+        <div className={styles.grid4} style={{ gap:8 }}>
           <BandCell pal={PALETTE.obs} isStandard deps={["Local"]} title="Traces" sub="Distributed request tracing"
             items={["FastMCP built-in OTel — every tool call auto-traced","HTTPXClientInstrumentor — HTTP calls as child spans","Tool name, args, duration, success/failure","Arize Phoenix OTLP backend (port 6006)"]}
             tags={["FastMCP OTel","HTTPXClientInstrumentor","Phoenix"]}
@@ -353,7 +359,7 @@ export default function Canvas() {
       <Divider label="Personal Standard Tools Reference" />
       <div style={{ background:"rgba(255,255,255,0.02)", border:"1px solid rgba(255,255,255,0.07)", borderRadius:12, padding:"16px 20px", marginBottom:18 }}>
         <div style={{ fontSize:10, fontWeight:700, color:"#64748b", letterSpacing:2, textTransform:"uppercase", marginBottom:12 }}>All tools marked ★ Personal Standard — click to open documentation</div>
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(220px, 1fr))", gap:8 }}>
+        <div className={styles.gridTools} style={{ gap:8 }}>
           {TOOLS.map((t, i) => (
             <a key={i} href={t.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none" }}>
               <div style={{ background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:8, padding:"8px 12px", display:"flex", flexDirection:"column", gap:3, cursor:"pointer", transition:"all 0.15s" }}
