@@ -104,6 +104,85 @@ const CertCard = ({ title, abbr, issuer, color }: (typeof certifications)[0]) =>
   </div>
 );
 
+const education = [
+  {
+    school: "Faculdade de Tecnologia Rocketseat",
+    degree: "Postgraduate Degree in Artificial Intelligence & Automation",
+    period: "Feb 2026 – Mar 2027",
+    color: "#818cf8",
+  },
+  {
+    school: "Pontifícia Universidade Católica do Rio Grande do Sul",
+    degree: "Postgraduate Degree in Full Stack Development, Computer Software Engineering",
+    period: "Jan 2025 – Feb 2026",
+    color: "#38bdf8",
+  },
+  {
+    school: "Uninove – Universidade Nove de Julho",
+    degree: "Technology Degree in Database, Information Technology",
+    period: "Aug 2010 – Apr 2013",
+    color: "#94a3b8",
+  },
+];
+
+const EducationCard = ({ school, degree, period, color }: (typeof education)[0]) => (
+  <div
+    style={{
+      background: PALETTE.surface,
+      border: `1px solid ${PALETTE.border}`,
+      borderRadius: 12,
+      padding: "16px 20px",
+      display: "flex",
+      alignItems: "flex-start",
+      gap: 16,
+    }}
+  >
+    <div
+      style={{
+        width: 10,
+        height: 10,
+        borderRadius: "50%",
+        background: color,
+        flexShrink: 0,
+        marginTop: 5,
+      }}
+    />
+    <div style={{ flex: 1 }}>
+      <div
+        style={{
+          fontSize: 14,
+          fontWeight: 700,
+          color: PALETTE.text,
+          fontFamily: "Inter, system-ui, sans-serif",
+          marginBottom: 3,
+        }}
+      >
+        {school}
+      </div>
+      <div
+        style={{
+          fontSize: 13,
+          color: PALETTE.slate,
+          fontFamily: "Inter, system-ui, sans-serif",
+          marginBottom: 4,
+          lineHeight: 1.5,
+        }}
+      >
+        {degree}
+      </div>
+      <div
+        style={{
+          fontSize: 12,
+          color: PALETTE.muted,
+          fontFamily: "Inter, system-ui, sans-serif",
+        }}
+      >
+        {period}
+      </div>
+    </div>
+  </div>
+);
+
 const posts = [
   {
     href: "https://www.linkedin.com/pulse/write-tool-trap-how-indirect-prompt-injection-turns-your-de-moraes-o22wf/",
@@ -340,6 +419,27 @@ export default function Home() {
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {certifications.map((c) => (
                 <CertCard key={c.abbr} {...c} />
+              ))}
+            </div>
+          </section>
+
+          {/* Education */}
+          <section style={{ marginBottom: 64 }}>
+            <h2
+              style={{
+                fontSize: 13,
+                fontWeight: 700,
+                color: PALETTE.muted,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                margin: "0 0 20px",
+              }}
+            >
+              Education
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {education.map((e) => (
+                <EducationCard key={e.school} {...e} />
               ))}
             </div>
           </section>
