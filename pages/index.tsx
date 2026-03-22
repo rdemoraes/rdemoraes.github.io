@@ -458,33 +458,68 @@ export default function Home() {
             >
               Tools
             </h2>
-            <Link
-              href="/canvas"
-              style={{
-                display: "block",
-                background: `#4f46e518`,
-                border: `1px solid #4f46e555`,
-                borderRadius: 12,
-                padding: "20px 24px",
-                textDecoration: "none",
-              }}
-            >
-              <div
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <Link
+                href="/canvas"
                 style={{
-                  fontSize: 15,
-                  fontWeight: 700,
-                  color: PALETTE.text,
-                  marginBottom: 6,
+                  display: "block",
+                  background: `#4f46e518`,
+                  border: `1px solid #4f46e555`,
+                  borderRadius: 12,
+                  padding: "20px 24px",
+                  textDecoration: "none",
+                  transition: "border-color 0.15s",
                 }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = PALETTE.indigoDim)}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#4f46e555")}
               >
-                GenAI Local Setup Canvas
-              </div>
-              <div style={{ fontSize: 13, color: PALETTE.slate, lineHeight: 1.6 }}>
-                A visual reference for building a high-standards AI-native engineering
-                environment — client layer, MCP servers, LiteLLM gateway, observability
-                stack, and security standards in one view.
-              </div>
-            </Link>
+                <div
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: PALETTE.text,
+                    marginBottom: 6,
+                  }}
+                >
+                  GenAI Local Setup Canvas
+                </div>
+                <div style={{ fontSize: 13, color: PALETTE.slate, lineHeight: 1.6 }}>
+                  A visual reference for building a high-standards AI-native engineering
+                  environment — client layer, MCP servers, LiteLLM gateway, observability
+                  stack, and security standards in one view.
+                </div>
+              </Link>
+              <Link
+                href="/platform"
+                style={{
+                  display: "block",
+                  background: `#0369a118`,
+                  border: `1px solid #0369a155`,
+                  borderRadius: 12,
+                  padding: "20px 24px",
+                  textDecoration: "none",
+                  transition: "border-color 0.15s",
+                }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#0369a1")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#0369a155")}
+              >
+                <div
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: PALETTE.text,
+                    marginBottom: 6,
+                  }}
+                >
+                  Platform Engineering Canvas
+                </div>
+                <div style={{ fontSize: 13, color: PALETTE.slate, lineHeight: 1.6 }}>
+                  A structured reference for everything a platform team owns — DevEx, CI/CD,
+                  infrastructure, security, observability, governance, data, products, and
+                  platform vision in nine domains.
+                </div>
+              </Link>
+            </div>
           </section>
         </main>
 
